@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 # Configuração do Flask e do Banco de Dados
@@ -13,14 +13,14 @@ class Aluno(db.Model):
     __tablename__ = 'aluno'
     _id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nome = db.Column(db.String(255))
-    AV1 = db.Column(db.Float)
-    AV2 = db.Column(db.Float)
+    av1 = db.Column(db.Float)
+    av2 = db.Column(db.Float)
     media = db.Column(db.Float)
 
-    def __init__(self, nome, AV1, AV2, media):
+    def __init__(self, nome, av1, av2, media):
         self.nome = nome
-        self.AV1 = AV1
-        self.AV2 = AV2
+        self.av1 = av1
+        self.av2 = av2
         self.media = media
 
 
@@ -35,11 +35,10 @@ def index():
 
 @app.route("/cadastrar")
 def cadastrar():
-    return render_template("cadastro.html")
+    alunos = Aluno.query.all()
+    return render_template("cadastro.html", alunos=alunos)
 
 # Cadastrar alunos
-
-
 @app.route("/cadastro", methods=['GET', 'POST'])
 def cadastro():
     if request.method == "POST":
@@ -52,15 +51,40 @@ def cadastro():
             al = Aluno(nome, av1, av2, media)
             db.session.add(al)
             db.session.commit()
-    return redirect(url_for("index"))
-
-# Listar alunos
+    return redirect(url_for("cadastrar"))
 
 
-@app.route("/lista")
-def lista():
+# Editar alunos
+@app.route("/atualizar/<int:id>", methods=['GET', 'POST'])
+def atualizar(id):
+    alunos = Aluno.query.filter_by(_id=id).first()
+
+    if request.method == "POST":
+        nome = request.form.get("nome")
+        av1 = request.form.get("av1")
+        av2 = request.form.get("av2")
+        media = request.form.get("media")
+
+        if nome and av1 and av2 and media:
+            alunos.nome = nome
+            alunos.av1 = av1
+            alunos.av2 = av2
+            alunos.media = media
+
+            db.session.commit()
+            return redirect(url_for("cadastrar"))
+    return render_template("cadastro.html", alunos=alunos)
+
+# Excluir alunos
+@app.route("/excluir/<int:id>", methods=['GET', 'POST', 'DELETE'])
+def excluir(id):
+    alunos = Aluno.query.filter_by(_id=id).first()
+
+    db.session.delete(alunos)
+    db.session.commit()
+
     alunos = Aluno.query.all()
-    return render_template("lista.html", alunos=alunos)
+    return render_template("cadastro.html", alunos=alunos)
 
 
 # Inicia o servidor no localhost na porta 8080

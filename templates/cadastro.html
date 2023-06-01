@@ -15,6 +15,122 @@
 </head>
 
 <body>
+    <!-- modal cadastrar -->
+    <div class="modal fade" id="cadastrar-aluno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cadastrar aluno</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- modal-body modalBody -->
+                <div class="modal-body">
+                    <form class="row g-3" action="{{ url_for('cadastro')}}" method="POST">
+                        <div class="col-md-6">
+                            <label class="form-label">Nome do aluno</label>
+                            <input type="text" class="form-control " name="nome" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">AV1</label>
+                            <input type="text" class="form-control " name="av1" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">AV2</label>
+                            <input type="text" class="form-control " name="av2" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Média</label>
+                            <input type="text" class="form-control " name="media" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button class="btn btn-primary" type="submit">Cadastrar</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-body modalBody -->
+            </div>
+        </div>
+    </div>
+    <!-- /.modal cadastrar -->
+
+    <!-- modal atualizar -->
+    <div class="modal fade" id="atualizar-aluno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Atualizar dados do aluno</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- modal-body modalBody -->
+                <div class="modal-body">
+                    <form class="row g-3" method="POST">
+                        {% for aluno in alunos %}
+                        {% if aluno  %}
+                        
+                        <div class="col-md-6">
+                            <label class="form-label">Nome do aluno</label>
+                            <input type="text" class="form-control" name="nome" value="{{ aluno.nome }}" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">AV1</label>
+                            <input type="text" class="form-control" name="av1" value="{{ aluno.av1 }} " required>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">AV2</label>
+                            <input type="text" class="form-control" name="av2" value="{{ aluno.av2 }} " required>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Média</label>
+                            <input type="text" class="form-control" name="media" value="{{ aluno.media }}" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button class="btn btn-primary" type="submit">Atualizar</button>
+                        </div>
+                        
+                        {% endif %}
+                        {% endfor %}
+                    </form>
+                </div>
+                <!-- /.modal-body modalBody -->
+            </div>
+        </div>
+    </div>
+    <!-- /.modal atualizar -->
+
+    <!-- modal excluir -->
+    <div class="modal fade" id="excluir-aluno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Excluir aluno</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- modal-body modalBody -->
+                <div class="modal-body">
+                    <form class="row g-3" action="" method="DELETE">
+                        <div class="modal-body">
+                            <h3>Você está certo disso?</h3>
+                            <h4>Essa ação não pode ser desfeita!</h4>
+                        </div>
+
+                        <div class="modal-footer">
+                            <a type="submit" class="btn btn-primary">Sim</a>
+                            <button data-dismiss="modal" class="btn btn-danger">Não</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-body modalBody -->
+            </div>
+        </div>
+    </div>
+    <!-- /.modal cadastrar -
+
+    <!-- container header -->
     <div class="container">
         <header class="border-bottom lh-1 py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
@@ -24,35 +140,11 @@
             </div>
         </header>
     </div>
+    <!-- /.container header -->
 
+    <!-- container table -->
     <main class="container">
         <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-            <div class="text-center">
-                <form class="row g-3" action="{{ url_for('cadastro')}}" method="POST">
-                    <div class="col-md-6">
-                        <label for="validationServer01" class="form-label">Nome do aluno</label>
-                        <input type="text" class="form-control " name="nome" required>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="validationServer02" class="form-label">AV1</label>
-                        <input type="text" class="form-control " name="av1" required>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="validationServer02" class="form-label">AV2</label>
-                        <input type="text" class="form-control " name="av2" required>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="validationServer02" class="form-label">Média</label>
-                        <input type="text" class="form-control " name="media" required>
-                    </div>
-                    <hr>
-
-                    <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Cadastrar</button>
-                    </div>
-                </form>
-            </div>
-            <hr>
             <div class="row">
                 <table class="table table-bordered table-hover">
                     <thead>
@@ -67,20 +159,37 @@
                     </thead>
                     <tbody>
                         {% for aluno in alunos %}
-                        <tr>
+                        <tr align="center">
                             <td>{{aluno._id}}</td>
                             <td>{{aluno.nome}}</td>
                             <td>{{aluno.av1}}</td>
                             <td>{{aluno.av2}}</td>
                             <td>{{aluno.media}}</td>
-                            <td></td>
+                            <td>
+
+                                <a type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                    data-bs-target="#atualizar-aluno">
+                                    Editar
+                                </a>
+                                <a type="button" href="/excluir/{{ aluno._id}}" class="btn btn-danger"
+                                    data-bs-toggle="modal" data-bs-target="#excluir-aluno">
+                                    Excluir
+                                </a>
+                            </td>
+
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
             </div>
         </div>
+        <!-- cadastros -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cadastrar-aluno">
+            Cadastrar aluno
+        </button>
     </main>
+    <br>
+    <!-- /.container table -->
 
     <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
         <a class="nav-item nav-link link-body-emphasis active">DISCIPLINA: DESENVOLVIMENTO RÁPIDO DE APLICAÇÕES EM
