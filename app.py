@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
+
 # Configuração do Flask e do Banco de Dados
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database_alunos.db'
@@ -30,15 +31,17 @@ with app.app_context():
 
 @app.route("/index")
 def index():
-    return render_template("index.html")
+    return render_template("index.ejs")
 
 
 @app.route("/cadastrar")
 def cadastrar():
     alunos = Aluno.query.all()
-    return render_template("cadastro.html", alunos=alunos)
+    return render_template("cadastro.ejs", alunos=alunos)
 
 # Cadastrar alunos
+
+
 @app.route("/cadastro", methods=['GET', 'POST'])
 def cadastro():
     if request.method == "POST":
@@ -73,9 +76,11 @@ def atualizar(id):
 
             db.session.commit()
             return redirect(url_for("cadastrar"))
-    return render_template("cadastro.html", alunos=alunos)
+    return render_template("cadastro.ejs", alunos=alunos)
 
 # Excluir alunos
+
+
 @app.route("/excluir/<int:id>", methods=['GET', 'POST', 'DELETE'])
 def excluir(id):
     alunos = Aluno.query.filter_by(_id=id).first()
@@ -84,9 +89,9 @@ def excluir(id):
     db.session.commit()
 
     alunos = Aluno.query.all()
-    return render_template("cadastro.html", alunos=alunos)
+    return render_template("cadastro.ejs", alunos=alunos)
 
 
 # Inicia o servidor no localhost na porta 8080
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080, debug=True)
+    app.run(host="127.0.0.1", port=5555, debug=True)

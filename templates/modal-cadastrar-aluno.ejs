@@ -1,0 +1,39 @@
+<!-- modal cadastrar -->
+<div class="modal fade" id="modal-cadastrar-aluno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cadastrar aluno</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- modal-body modalBody -->
+            <div class="modal-body">
+                <form class="row g-3" action="{{ url_for('cadastro')}}" method="POST">
+                    <div class="col-md-6">
+                        <label class="form-label">Nome do aluno</label>
+                        <input type="text" class="form-control " name="nome" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">AV1</label>
+                        <input type="text" class="form-control " name="av1" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">AV2</label>
+                        <input type="text" class="form-control " name="av2" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Média</label>
+                        <input type="text" class="form-control " name="media" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button class="btn btn-primary" type="submit">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-body modalBody -->
+        </div>
+    </div>
+</div>
+<!-- /.modal cadastrar -->

@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Página de cadastro</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css">
+
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -15,45 +17,8 @@
 </head>
 
 <body>
-    <!-- modal cadastrar -->
-    <div class="modal fade" id="cadastrar-aluno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cadastrar aluno</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
 
-                <!-- modal-body modalBody -->
-                <div class="modal-body">
-                    <form class="row g-3" action="{{ url_for('cadastro')}}" method="POST">
-                        <div class="col-md-6">
-                            <label class="form-label">Nome do aluno</label>
-                            <input type="text" class="form-control " name="nome" required>
-                        </div>
-                        <div class="col-md-2">
-                            <label class="form-label">AV1</label>
-                            <input type="text" class="form-control " name="av1" required>
-                        </div>
-                        <div class="col-md-2">
-                            <label class="form-label">AV2</label>
-                            <input type="text" class="form-control " name="av2" required>
-                        </div>
-                        <div class="col-md-2">
-                            <label class="form-label">Média</label>
-                            <input type="text" class="form-control " name="media" required>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            <button class="btn btn-primary" type="submit">Cadastrar</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- /.modal-body modalBody -->
-            </div>
-        </div>
-    </div>
-    <!-- /.modal cadastrar -->
+ 
 
     <!-- modal atualizar -->
     <div class="modal fade" id="atualizar-aluno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,9 +32,9 @@
                 <!-- modal-body modalBody -->
                 <div class="modal-body">
                     <form class="row g-3" method="POST">
-                        {% for aluno in alunos %}
-                        {% if aluno  %}
-                        
+
+                        {%if alunos %}
+                        {%for aluno in alunos %}
                         <div class="col-md-6">
                             <label class="form-label">Nome do aluno</label>
                             <input type="text" class="form-control" name="nome" value="{{ aluno.nome }}" required>
@@ -90,9 +55,8 @@
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                             <button class="btn btn-primary" type="submit">Atualizar</button>
                         </div>
-                        
-                        {% endif %}
                         {% endfor %}
+                        {% endif %}
                     </form>
                 </div>
                 <!-- /.modal-body modalBody -->
@@ -167,12 +131,12 @@
                             <td>{{aluno.media}}</td>
                             <td>
 
-                                <a type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                <a type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
                                     data-bs-target="#atualizar-aluno">
                                     Editar
                                 </a>
-                                <a type="button" href="/excluir/{{ aluno._id}}" class="btn btn-danger"
-                                    data-bs-toggle="modal" data-bs-target="#excluir-aluno">
+                                <a href="/excluir/{{ aluno._id}}" class="btn btn-outline-danger" data-bs-toggle=""
+                                    data-bs-target="">
                                     Excluir
                                 </a>
                             </td>
@@ -184,7 +148,8 @@
             </div>
         </div>
         <!-- cadastros -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cadastrar-aluno">
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+            data-bs-target="#modal-cadastrar-aluno">
             Cadastrar aluno
         </button>
     </main>
@@ -195,7 +160,8 @@
         <a class="nav-item nav-link link-body-emphasis active">DISCIPLINA: DESENVOLVIMENTO RÁPIDO DE APLICAÇÕES EM
             PYTHON</a>
     </footer>
-
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
