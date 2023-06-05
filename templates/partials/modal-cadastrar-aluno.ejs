@@ -10,9 +10,29 @@
             <!-- modal-body modalBody -->
             <div class="modal-body">
                 <form class="row g-3" action="{{ url_for('cadastro')}}" method="POST">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <label class="form-label">Matrícula</label>
+                        <input type="text" class="form-control " name="matricula" required>
+                    </div>
+                    <div class="col-md-8">
                         <label class="form-label">Nome do aluno</label>
                         <input type="text" class="form-control " name="nome" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Data nascimento </label>
+                        <input type="text" class="form-control " name="data_nascimento" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Idade</label>
+                        <input type="text" class="form-control " name="idade" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Sexo</label>
+                        <input type="text" class="form-control " name="sexo" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">CPF</label>
+                        <input type="text" class="form-control " name="cpf" required>
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">AV1</label>
@@ -21,10 +41,6 @@
                     <div class="col-md-2">
                         <label class="form-label">AV2</label>
                         <input type="text" class="form-control " name="av2" required>
-                    </div>
-                    <div class="col-md-2">
-                        <label class="form-label">Média</label>
-                        <input type="text" class="form-control " name="media" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

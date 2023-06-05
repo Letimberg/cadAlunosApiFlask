@@ -1,0 +1,59 @@
+<!-- modal atualizar -->
+<div class="modal fade" id="modal-editar-aluno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Atualizar dados do aluno</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- modal-body modalBody -->
+            <div class="modal-body">
+                <form class="row g-3" method="POST">
+
+                    {% for aluno in alunos %}
+                    <div class="col-md-4">
+                        <label class="form-label">Matrícula</label>
+                        <input type="text" class="form-control " name="matricula" value="{{ aluno.matricula }}"
+                            required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Nome do aluno</label>
+                        <input type="text" class="form-control" name="nome" value="{{ aluno.nome }}" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Data nascimento </label>
+                        <input type="text" class="form-control " name="data_nascimento" value="{{ aluno.data_nascimento }}" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Idade</label>
+                        <input type="text" class="form-control " name="idade" value="{{ aluno.idade}}" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Sexo</label>
+                        <input type="text" class="form-control " name="sexo" value="{{ aluno.sexo}}" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">CPF</label>
+                        <input type="text" class="form-control " name="cpf" value="{{ aluno.cpf}}" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">AV1</label>
+                        <input type="text" class="form-control" name="av1" value="{{ aluno.av1 }} " required>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">AV2</label>
+                        <input type="text" class="form-control" name="av2" value="{{ aluno.av2 }} " required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button class="btn btn-primary" type="submit">Atualizar</button>
+                    </div>
+                    {% endfor %}
+                </form>
+            </div>
+            <!-- /.modal-body modalBody -->
+        </div>
+    </div>
+</div>
+<!-- /.modal atualizar -->
