@@ -5,17 +5,42 @@
 
 {% block body %}
 
+<style>
+    .p {
+        width: 150px;
+        display: inline-block;
+        padding-left: 180px;
+        font-size: small;
+        color: black;
+    }
+</style>
+
 <main class="container">
     <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
         <div class="text-center">
-            <a href="{{ url_for ('cadastrar')}}"> Cadastrar novo aluno</a>
+            <a class="btn btn-outline-primary" href="{{ url_for ('cadastrar')}}"> Cadastrar novo aluno</a>
         </div>
     </div>
 </main>
 
 <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
-    <a class="nav-item nav-link link-body-emphasis active">DISCIPLINA: DESENVOLVIMENTO RÁPIDO DE APLICAÇÕES EM
-        PYTHON</a>
+    <h2>DISCIPLINA: DESENVOLVIMENTO RÁPIDO DE APLICAÇÕES EM PYTHON</h2>
+
+    <div class="row">
+        <p style="font-size: 30px;">Docente: Cynthia Moreira Maia</p>
+        <p style="font-size: 25px;">Equipe</p>
+    </div>
+
+    <div class="row">
+        <p class="p">202203745859 - Daniel de Vasconcelos Emim </p>
+        <p class="p">202212097333 - Kaue lima Sousa </p>
+        <p class="p">202212041541 - Adail barreira de Queiroz Filho </p>
+        <p class="p">202203065981 - Rinaldo Uchoa Pontes Junior </p>
+        <p class="p">202203484869 - Cainã Gonçalves Silva </p>
+        <p class="p">202208687342 - Pollyanna Moreira Melo </p>
+        <p class="p">202107377101 - Francisco Letimberg Mesquita Cavalcante</p>
+
+    </div>
 
 </footer>
 

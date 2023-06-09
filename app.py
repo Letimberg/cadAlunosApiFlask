@@ -103,7 +103,7 @@ def atualizar(id):
             alunos.av2 = av2
             db.session.commit()
             return redirect(url_for("cadastrar"))
-    return render_template("cadastro.ejs", alunos=alunos)
+    return render_template("atualizar.ejs", alunos=alunos)
 
 # Excluir alunos
 

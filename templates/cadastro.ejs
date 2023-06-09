@@ -70,8 +70,8 @@
                         <td>{{ aluno.calcular_media() }}</td>
 
                         <td>
-                            <a href="/atualizar/<int:id>" class="btn btn-outline-warning" data-bs-toggle="modal"
-                                data-bs-target="#modal-editar-aluno">
+                            <a href="/atualizar/{{ aluno._id}}" class="btn btn-outline-warning" data-bs-toggle=""
+                            data-bs-target="#">
                                 Editar
                             </a>
                             <a href="/excluir/{{ aluno._id}}" class="btn btn-outline-danger" data-bs-toggle=""

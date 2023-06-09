@@ -1,3 +1,9 @@
+{% extends 'body.ejs' %}
+
+{% block title %} Cadastro de Alunos {% endblock %}
+
+{% block body %}
+
 <!-- modal atualizar -->
 <div class="modal fade" id="modal-editar-aluno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -8,52 +14,53 @@
             </div>
 
             <!-- modal-body modalBody -->
+            {% if alunos == alunos %}
             <div class="modal-body">
                 <form class="row g-3" method="POST">
-
-                    {% for aluno in alunos %}
                     <div class="col-md-4">
                         <label class="form-label">Matrícula</label>
-                        <input type="text" class="form-control " name="matricula" value="{{ aluno.matricula }}"
+                        <input type="text" class="form-control " name="matricula" value="{{ alunos.matricula }}"
                             required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Nome do aluno</label>
-                        <input type="text" class="form-control" name="nome" value="{{ aluno.nome }}" required>
+                        <input type="text" class="form-control" name="nome" value="{{ alunos.nome }}" required>
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">Data nascimento </label>
-                        <input type="text" class="form-control " name="data_nascimento" value="{{ aluno.data_nascimento }}" required>
+                        <input type="text" class="form-control " name="data_nascimento"
+                            value="{{ alunos.data_nascimento }}" required>
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">Idade</label>
-                        <input type="text" class="form-control " name="idade" value="{{ aluno.idade}}" required>
+                        <input type="text" class="form-control " name="idade" value="{{ alunos.idade}}" required>
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">Sexo</label>
-                        <input type="text" class="form-control " name="sexo" value="{{ aluno.sexo}}" required>
+                        <input type="text" class="form-control " name="sexo" value="{{ alunos.sexo}}" required>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label">CPF</label>
-                        <input type="text" class="form-control " name="cpf" value="{{ aluno.cpf}}" required>
+                        <input type="text" class="form-control " name="cpf" value="{{ alunos.cpf}}" required>
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">AV1</label>
-                        <input type="text" class="form-control" name="av1" value="{{ aluno.av1 }} " required>
+                        <input type="text" class="form-control" name="av1" value="{{ alunos.av1 }} " required>
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">AV2</label>
-                        <input type="text" class="form-control" name="av2" value="{{ aluno.av2 }} " required>
+                        <input type="text" class="form-control" name="av2" value="{{ alunos.av2 }} " required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                         <button class="btn btn-primary" type="submit">Atualizar</button>
                     </div>
-                    {% endfor %}
                 </form>
             </div>
             <!-- /.modal-body modalBody -->
+            {% endif %}
         </div>
     </div>
 </div>
 <!-- /.modal atualizar -->
+{% endblock %}
